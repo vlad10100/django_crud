@@ -6,12 +6,10 @@
         <p>Create objects and save it on the database.</p>
         <form action="", method="post" autocomplete="off">
             {% csrf_token %}
-            {{form}}
+            {{form.as_p}}
             </div>
-
-      
                 <div>
-                        <button type="submit" class="btn btn-success btn-block btn-lg">SUBMIT</button>
+                     <button type="submit" class="btn btn-success btn-block btn-lg">SUBMIT</button>
                 </div>
                 <div>
                     <a href="{% url 'display' %}" class="btn btn-secondary btn-block btn-lg">
