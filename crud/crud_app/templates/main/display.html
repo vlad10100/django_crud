@@ -1,0 +1,44 @@
+
+
+{% extends 'main/base.html' %}
+{% block title%}CRUD{%endblock%}
+{% block content %}
+	<table class="table table-borderless">
+		<thead class="border-bottom" style="font-weight: bold;">
+			<tr>
+				<td>Brand</td>
+				<td>Model</td>
+				<td>Color</td>
+                <td>Classification</td>
+				<td>
+					<a href="{% url 'create' %}" class="btn btn-outline-success">
+						Add New
+					</a>
+				</td>
+			</tr>
+		</thead>
+		<tbody>
+			{% for cars in display %}
+			<tr>
+				<td>{{cars.car_brand}}</td>
+				<td>{{cars.car_model}}</td>
+				<td>{{cars.car_color}}</td>
+                <td>{{cars.car_classification}}</td>
+				<td>
+					<a href="{% url 'update' cars.id %}" class="btn btn-outline-primary">
+						Edit
+					</a>
+					<form action="{% url 'delete' cars.id %}" method="post" class="d-inline">
+						{% csrf_token %}
+						<button class="btn btn-outline-danger" type="submit">Delete</bustton>
+					</form>
+				</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	{% endblock %}
+
+
+
+	

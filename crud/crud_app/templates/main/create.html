@@ -1,0 +1,35 @@
+
+
+{% extends 'main/base.html' %}
+{% block title%}Create and Update{%endblock%}
+{% load crispy_forms_tags %}
+    {% block content %}
+        <p>Create objects and save it on the database.</p>
+        <form action="", method="post" autocomplete="off">
+            {% csrf_token %}
+            {{form.car_brand|as_crispy_field}}
+            {{form.car_model|as_crispy_field}}
+            <div class='row'>
+                <div class='col-md-4'>
+                    {{form.car_color|as_crispy_field}}
+                </div>
+                <div class='col-md-8'>
+                    {{form.car_classification|as_crispy_field}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8">
+                        <button type="submit" class="btn btn-success btn-block btn-lg">SUBMIT</button>
+                </div>
+                <div class="col-md-4">
+                    <a href="{% url 'display' %}" class="btn btn-secondary btn-block btn-lg">
+                        Back to List
+                    </a>
+                </div>
+            </div>
+        </form>
+    {% endblock %}
+
+
+
+    
